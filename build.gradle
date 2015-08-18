@@ -1,0 +1,73 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+
+apply plugin: 'scala'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+
+group = 'com.syamantakm.finatra.guice.example'
+version = '1.0.0-SNAPSHOT'
+
+description = '"finatra-guice-example"'
+
+mainClassName = 'com.syamantakm.finatra.guice.example.MyServerMain'
+
+repositories {
+    maven { url 'http://repo.maven.apache.org/maven2' }
+    maven { url 'https://maven.twttr.com' }
+    mavenCentral()
+    
+}
+
+ext {
+    scalaVersion = '2.11.7'
+    finatraVersion = '2.0.0.M2'
+}
+
+dependencies {
+    compile "org.scala-lang:scala-library:$scalaVersion"
+    compile "org.scala-lang:scala-compiler:$scalaVersion"
+    compile "org.scala-lang:scala-reflect:$scalaVersion"
+    compile "com.twitter.inject:inject-core_2.11:$finatraVersion"
+    compile "com.twitter.finatra:finatra-http_2.11:$finatraVersion"
+    compile "com.twitter.finatra:finatra-logback_2.11:$finatraVersion"
+  
+    testCompile 'org.testng:testng:6.8'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'org.scalatest:scalatest_2.11:2.2.4'
+    testCompile 'org.scalamock:scalamock-scalatest-support_2.11:3.2.2'
+    testCompile 'org.specs2:specs2_2.11:2.3.12'
+    testCompile "com.twitter.finatra:finatra-http_2.11:$finatraVersion"
+    testCompile "com.twitter.finatra:finatra-http_2.11:$finatraVersion:tests"
+    testCompile "com.twitter.inject:inject-server_2.11:$finatraVersion"
+    testCompile "com.twitter.inject:inject-server_2.11:$finatraVersion:tests"
+    testCompile "com.twitter.inject:inject-server_2.11:$finatraVersion:"
+    testCompile "com.twitter.inject:inject-app_2.11:$finatraVersion"
+    testCompile "com.twitter.inject:inject-app_2.11:$finatraVersion:tests"
+    testCompile "com.twitter.inject:inject-core_2.11:$finatraVersion"
+    testCompile "com.twitter.inject:inject-core_2.11:$finatraVersion:tests"
+    testCompile "com.twitter.inject:inject-modules_2.11:$finatraVersion"
+    testCompile "com.twitter.inject:inject-modules_2.11:$finatraVersion:tests"
+}
+
+task testNG(type: Test) {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+}
+
+
+compileScala {
+    scalaCompileOptions.additionalParameters = ["-feature"]
+}
+
+compileTestScala {
+    scalaCompileOptions.additionalParameters = ["-feature"]
+}
+
