@@ -10,13 +10,13 @@ object MyModule extends TwitterModule {
 
   @Singleton
   @Provides
-  def provideDao: MyDao = new MyDao
+  def provideDao: MyDao = new MyDaoImpl
 
 
   @Singleton
   @Provides
   def provideService(injector: Injector): MyService = {
     val myDao = injector.instance[MyDao]
-    new MyService(myDao)
+    new MyServiceImpl(myDao)
   }
 }

@@ -3,6 +3,10 @@ package com.syamantakm.finatra.guice.example
 /**
  * @author syamantak.
  */
-class MyDao {
-  def greetings(): String = "Hello"
+trait MyDao {
+  def greetings(): String
+}
+
+class MyDaoImpl extends MyDao {
+  override def greetings(): String = "Hello"
 }
