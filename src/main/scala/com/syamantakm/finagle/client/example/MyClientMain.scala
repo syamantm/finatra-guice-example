@@ -11,6 +11,14 @@ import com.twitter.util.{Duration, Await}
  * @author syamantak.
  */
 object MyClientMain extends App {
+  val getReq = RequestBuilder()
+    .url("http://localhost:8888/greetings")
+    .buildGet()
+
+  val postReq = RequestBuilder()
+    .url("http://localhost:8888/echoPut")
+    .addHeader(Fields.ContentType,  MediaType.Json)
+    .buildPost(Utf8("""{"name":"bob"}"""))
 
   val putReq = RequestBuilder()
     .url("http://localhost:8888/echoPut")
@@ -23,6 +31,17 @@ object MyClientMain extends App {
     .build(Method.Patch, Some(Utf8("""{"name":"bob"}""")))
 
   val client = Httpx.newService("localhost:8888")
+
+  val getFuture = client(getReq)
+
+  val getResponse = Await.result(getFuture, Duration(1, TimeUnit.SECONDS))
+  println(s"GET : status : ${getResponse.getStatusCode()}, body : ${getResponse.getContentString()}")
+
+
+  val postFuture = client(putReq)
+
+  val postResponse = Await.result(postFuture, Duration(1, TimeUnit.SECONDS))
+  println(s"POST : status : ${postResponse.getStatusCode()}, body : ${postResponse.getContentString()}")
 
   val putFuture = client(putReq)
 

@@ -17,6 +17,10 @@ class MyController @Inject()(myService: MyService) extends Controller {
     myService.greetings
   }
 
+  post("/echoPost") { request: Greetings =>
+    request
+  }
+
   put("/echoPut") { request: Greetings =>
     request
   }
