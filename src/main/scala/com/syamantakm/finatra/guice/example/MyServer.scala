@@ -1,6 +1,6 @@
 package com.syamantakm.finatra.guice.example
 
-import com.twitter.finagle.http.{Response, Request}
+import com.twitter.finagle.httpx.{Response, Request}
 import com.twitter.finatra.http.HttpServer
 import com.twitter.finatra.http.filters.CommonFilters
 import com.twitter.finatra.http.routing.HttpRouter
