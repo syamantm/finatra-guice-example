@@ -3,6 +3,7 @@
 Using:
 
  Finatra : 2.0.0
+ 
  Finagle : 6.28
  
 ## To Run tests
