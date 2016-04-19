@@ -29,6 +29,7 @@ repositories {
 ext {
     scalaVersion = '2.11.7'
     finatraVersion = '2.1.5'
+    jacksonVersion = '2.5.2'
 }
 
 dependencies {
@@ -38,6 +39,7 @@ dependencies {
     compile "com.twitter.inject:inject-core_2.11:$finatraVersion"
     compile "com.twitter.finatra:finatra-http_2.11:$finatraVersion"
     compile "com.twitter.finatra:finatra-slf4j_2.11:$finatraVersion"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
     compile 'ch.qos.logback:logback-classic:1.1.3'
 
 
