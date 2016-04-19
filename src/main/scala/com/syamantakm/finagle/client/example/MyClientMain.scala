@@ -2,8 +2,8 @@ package com.syamantakm.finagle.client.example
 
 import java.util.concurrent.TimeUnit
 
-import com.twitter.finagle.Httpx
-import com.twitter.finagle.httpx.{MediaType, Fields, Method, RequestBuilder}
+import com.twitter.finagle.Http
+import com.twitter.finagle.http.{MediaType, Fields, Method, RequestBuilder}
 import com.twitter.io.Buf._
 import com.twitter.util.{Duration, Await}
 
@@ -30,7 +30,7 @@ object MyClientMain extends App {
     .addHeader(Fields.ContentType,  MediaType.Json)
     .build(Method.Patch, Some(Utf8("""{"name":"bob"}""")))
 
-  val client = Httpx.newService("localhost:8888")
+  val client = Http.client.newService("localhost:8888")
 
   val getFuture = client(getReq)
 

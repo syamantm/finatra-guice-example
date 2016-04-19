@@ -1,10 +1,10 @@
 package com.syamantakm.finatra.guice.example
 
-import com.twitter.finagle.httpx.{Response, Request}
+import com.twitter.finagle.http.{Response, Request}
 import com.twitter.finatra.http.HttpServer
-import com.twitter.finatra.http.filters.CommonFilters
+import com.twitter.finatra.http.filters.{LoggingMDCFilter, CommonFilters}
 import com.twitter.finatra.http.routing.HttpRouter
-import com.twitter.finatra.logging.filter.LoggingMDCFilter
+import com.twitter.finatra.logging.modules.Slf4jBridgeModule
 
 /**
  * @author syamantak.
@@ -14,7 +14,7 @@ object MyServerMain extends MyServer
 
 class MyServer extends HttpServer  {
 
-  override val modules = Seq(MyModule)
+  override val modules = Seq(Slf4jBridgeModule, MyModule)
 
   override def configureHttp(router: HttpRouter): Unit = {
     router
