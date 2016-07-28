@@ -27,8 +27,8 @@ repositories {
 }
 
 ext {
-    scalaVersion = '2.11.7'
-    finatraVersion = '2.1.5'
+    scalaVersion = '2.11.8'
+    finatraVersion = '2.2.0'
     jacksonVersion = '2.5.2'
 }
 
@@ -36,9 +36,9 @@ dependencies {
     compile "org.scala-lang:scala-library:$scalaVersion"
     compile "org.scala-lang:scala-compiler:$scalaVersion"
     compile "org.scala-lang:scala-reflect:$scalaVersion"
-    compile "com.twitter.inject:inject-core_2.11:$finatraVersion"
-    compile "com.twitter.finatra:finatra-http_2.11:$finatraVersion"
-    compile "com.twitter.finatra:finatra-slf4j_2.11:$finatraVersion"
+    compile "com.twitter:inject-core_2.11:$finatraVersion"
+    compile "com.twitter:finatra-http_2.11:$finatraVersion"
+    compile "com.twitter:finatra-slf4j_2.11:$finatraVersion"
     compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
     compile 'ch.qos.logback:logback-classic:1.1.3'
 
@@ -49,18 +49,18 @@ dependencies {
     testCompile 'org.scalamock:scalamock-scalatest-support_2.11:3.2.2'
     testCompile 'org.specs2:specs2_2.11:2.3.12'
     testCompile 'com.google.inject.extensions:guice-testlib:4.0'
-    testCompile "com.twitter.finatra:finatra-http_2.11:$finatraVersion"
-    testCompile "com.twitter.finatra:finatra-http_2.11:$finatraVersion:tests"
-    testCompile "com.twitter.finatra:finatra-jackson_2.11:$finatraVersion"
-    testCompile "com.twitter.finatra:finatra-jackson_2.11:$finatraVersion:tests"
-    testCompile "com.twitter.inject:inject-server_2.11:$finatraVersion"
-    testCompile "com.twitter.inject:inject-server_2.11:$finatraVersion:tests"
-    testCompile "com.twitter.inject:inject-app_2.11:$finatraVersion"
-    testCompile "com.twitter.inject:inject-app_2.11:$finatraVersion:tests"
-    testCompile "com.twitter.inject:inject-core_2.11:$finatraVersion"
-    testCompile "com.twitter.inject:inject-core_2.11:$finatraVersion:tests"
-    testCompile "com.twitter.inject:inject-modules_2.11:$finatraVersion"
-    testCompile "com.twitter.inject:inject-modules_2.11:$finatraVersion:tests"
+    testCompile "com.twitter:finatra-http_2.11:$finatraVersion"
+    testCompile "com.twitter:finatra-http_2.11:$finatraVersion:tests"
+    testCompile "com.twitter:finatra-jackson_2.11:$finatraVersion"
+    testCompile "com.twitter:finatra-jackson_2.11:$finatraVersion:tests"
+    testCompile "com.twitter:inject-server_2.11:$finatraVersion"
+    testCompile "com.twitter:inject-server_2.11:$finatraVersion:tests"
+    testCompile "com.twitter:inject-app_2.11:$finatraVersion"
+    testCompile "com.twitter:inject-app_2.11:$finatraVersion:tests"
+    testCompile "com.twitter:inject-core_2.11:$finatraVersion"
+    testCompile "com.twitter:inject-core_2.11:$finatraVersion:tests"
+    testCompile "com.twitter:inject-modules_2.11:$finatraVersion"
+    testCompile "com.twitter:inject-modules_2.11:$finatraVersion:tests"
 }
 
 task testNG(type: Test) {

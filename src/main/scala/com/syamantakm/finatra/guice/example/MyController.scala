@@ -1,13 +1,13 @@
 package com.syamantakm.finatra.guice.example
 
-import com.google.inject.{Singleton, Inject}
-import com.twitter.finagle.http.Request
+import com.google.inject.{Inject, Singleton}
+import com.twitter.finagle.http.{Fields, Request}
 import com.twitter.finatra.http.Controller
 import com.twitter.finatra.request.QueryParam
 
 /**
- * @author syamantak.
- */
+  * @author syamantak.
+  */
 
 case class Greetings(name: String)
 
@@ -24,6 +24,7 @@ class MyController @Inject()(myService: MyService) extends Controller {
 
   get("/greetings") { request: Request =>
     debug("received")
+    request.headerMap.get(Fields.AcceptLanguage)
     myService.greetings
   }
 

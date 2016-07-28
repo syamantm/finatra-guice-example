@@ -2,9 +2,9 @@
 
 Using:
 
- Finatra : 2.0.0
+ Finatra : 2.2.0
  
- Finagle : 6.28
+ Finagle : 6.36.0
  
 ## To Run tests
 
