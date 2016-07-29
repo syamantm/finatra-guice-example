@@ -16,6 +16,8 @@ class MyServer extends HttpServer  {
 
   override val modules = Seq(Slf4jBridgeModule, MyModule)
 
+  override def exceptionMapperModule = MyExceptionMapperModule
+
   override def configureHttp(router: HttpRouter): Unit = {
     router
       .filter[LoggingMDCFilter[Request, Response]]
