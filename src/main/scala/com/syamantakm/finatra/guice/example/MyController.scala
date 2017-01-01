@@ -3,7 +3,8 @@ package com.syamantakm.finatra.guice.example
 import com.google.inject.{Inject, Singleton}
 import com.twitter.finagle.http.{Fields, Request}
 import com.twitter.finatra.http.Controller
-import com.twitter.finatra.request.QueryParam
+import com.twitter.finatra.http.request.RequestUtils
+import com.twitter.finatra.request.{FormParam, QueryParam, RouteParam}
 
 /**
   * @author syamantak.

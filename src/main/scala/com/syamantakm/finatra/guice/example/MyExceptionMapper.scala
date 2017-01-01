@@ -6,13 +6,13 @@ import java.sql.Timestamp
 import com.google.inject.{Inject, Singleton}
 import com.twitter.finagle.http.{Request, Response}
 import com.twitter.finatra.http.exceptions._
-import com.twitter.finatra.http.internal.exceptions.json.JsonParseExceptionMapper
 import com.twitter.finatra.http.response.ResponseBuilder
 import com.twitter.finatra.json.internal.caseclass.exceptions.CaseClassMappingException
 import com.twitter.inject.{Injector, Logging, TwitterModule}
 
 /**
   * Testing finatra exception message override. Not to be used in production in it's current form.
+  *
   * @author syamantak.
   */
 
@@ -52,13 +52,8 @@ class MyCaseClassExceptionMapper @Inject()(
 }
 
 object MyExceptionMapperModule extends TwitterModule {
-  override def configure() {
-    bindSingleton[DefaultExceptionMapper].to[MyExceptionMapper]
-  }
-
-  override def singletonStartup(injector: Injector) {
+  override def singletonStartup(injector: Injector): Unit = {
     val manager = injector.instance[ExceptionManager]
-    manager.add[JsonParseExceptionMapper]
     manager.add[MyCaseClassExceptionMapper]
   }
 }

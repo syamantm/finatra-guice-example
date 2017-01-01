@@ -2,11 +2,11 @@ package com.syamantakm.finatra.guice.example
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonInclude.Include
-import com.fasterxml.jackson.databind.{PropertyNamingStrategy, DeserializationFeature, ObjectMapper}
+import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper, PropertyNamingStrategy}
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.module.scala.experimental.ScalaObjectMapper
-import com.fasterxml.jackson.datatype.jsr310.JSR310Module
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
 
 case class MyTestClass(id: Long,
@@ -14,6 +14,7 @@ case class MyTestClass(id: Long,
                        name: Option[String] = None,
                        description: Option[String] = None
                       )
+
 /**
   * @author syamantak.
   */
@@ -21,9 +22,9 @@ class JsonTest extends FlatSpec with Matchers {
 
   val mapper = new ObjectMapper() with ScalaObjectMapper
   mapper.registerModule(DefaultScalaModule)
-  mapper.registerModule(new JSR310Module())
+  mapper.registerModule(new JavaTimeModule())
   mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-  mapper.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES)
+  mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
   mapper.setSerializationInclusion(Include.NON_NULL)
 
   "Json" should "include null field" in {
